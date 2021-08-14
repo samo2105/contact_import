@@ -15,17 +15,31 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-            <%= form_with model: CsvFile.new do |f| %>
+            <%= form_with model: @new_csv do |f| %>
+                <div>
                 <div class="field mb-3">
                     <%= f.label :file, class: 'form-label' %><br />
                     <%= f.file_field :file, autofocus: true, class: 'form-control form-control-lg'%>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <%= f.submit "Upload", class: 'btn btn-primary' %>
+                <h5>columns order</h5>
+                <div class="row">
+                <%= f.fields_for 'order', @new_csv.order do |p| %>
+                    <% @select_fields.each_with_index do |field, index| %>
+                            <div class="field col">
+                                <%= p.label "Column #{index + 1}", class: 'form-label' %><br />
+                                <%= p.select("", @select_fields, selected: field, class: 'form-select')%>
+                            </div>
+                    <% end %>
+                <% end %>
+                </div>
+                
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <%= f.submit "Upload", class: 'btn btn-primary' %>
+                </div>
+                </div>
             <% end %>
-            </div>
         </div>
     </div>
 </div>
@@ -40,8 +54,8 @@
             </h2>
             <div id="collapse<%= file.id %>" class="accordion-collapse collapse show" aria-labelledby="heading<%= file.id %>" data-bs-parent="#accordionExample">
             <div class="accordion-body">
-                <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-            </div>
+                <p> state: <%= file.state %></p>
+                <p> logs: <%= file.logs %>
             </div>
         </div>
     <% end %>

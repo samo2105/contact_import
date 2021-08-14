@@ -3,21 +3,31 @@ class CsvFilesController < ApplicationController
 
     def index
         @files = current_user.csv_files
+        @select_fields = [
+            [ :name, :name],
+            [ :dob, :dob],
+            [ :phone, :phone],
+            [ :address, :address],
+            [ :credit_card, :credit_card],
+            [ :email, :email],
+        ]
+        @new_csv = CsvFile.new
     end
     
     def create
         response = false
-        csv = CsvFile.new(csv_file_params)
+        csv = current_user.csv_files.new(csv_file_params)
         if csv.save
             response = true
-            CsvFileParserWorker.perform_async(csv.id)
+            CsvFileParserWorker.perform_async(csv.id, url_for(csv.file))
+        else
+            redirect_to csv_files_path, alert: "Error uploading file #{csv.errors.messages}"
         end
-        render status: 200, json: {created: response}
     end
 
     private
 
     def csv_file_params
-        params.require(:csv_file).permit(:user_id, :file, :order)
+        params.require(:csv_file).permit(:file, order: [])
     end
 end
