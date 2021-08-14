@@ -1,5 +1,9 @@
 class CsvFilesController < ApplicationController
     before_action :authenticate_user!
+
+    def index
+        @files = current_user.csv_files
+    end
     
     def create
         response = false
@@ -14,6 +18,6 @@ class CsvFilesController < ApplicationController
     private
 
     def csv_file_params
-        params.require(:csv_file).permit(:user_id. :file, :order)
+        params.require(:csv_file).permit(:user_id, :file, :order)
     end
 end

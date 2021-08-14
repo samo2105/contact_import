@@ -1,0 +1,48 @@
+<h1 id="Title">Your CSV Files</h1>
+
+<!-- Button trigger modal -->
+<!-- Button trigger modal -->
+<button id="UploadButton" type="button" class="btn btn-warning p-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Upload CSV File
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Upload File</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            <%= form_with model: CsvFile.new do |f| %>
+                <div class="field mb-3">
+                    <%= f.label :file, class: 'form-label' %><br />
+                    <%= f.file_field :file, autofocus: true, class: 'form-control form-control-lg'%>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <%= f.submit "Upload", class: 'btn btn-primary' %>
+            <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="accordion" id="accordionExample">
+    <% @files.each do |file|%>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading<%= file.id %>">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= file.id %>" aria-expanded="true" aria-controls="collapse<%= file.id %>">
+                <%= file.updated_at.strftime("%F")%>
+            </button>
+            </h2>
+            <div id="collapse<%= file.id %>" class="accordion-collapse collapse show" aria-labelledby="heading<%= file.id %>" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+            </div>
+        </div>
+    <% end %>
+</div>
