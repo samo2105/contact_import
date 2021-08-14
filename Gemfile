@@ -42,6 +42,8 @@ gem 'credit_card_validations', '~> 4.1.0'
 
 # Pagination
 gem 'will_paginate', '~> 3.1.0'
+# Design
+gem 'bootstrap', '~> 5.1.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
