@@ -1,7 +1,7 @@
 class CsvFile < ApplicationRecord
   belongs_to :user
   has_one_attached :file
-  validates :user_id, :file, :state, presence: true
+  validates :user_id, :file, :state,  :order, presence: true
   enum state: [:on_hold, :processing, :failed, :finished]
   validate :correct_file_mime_type
 
