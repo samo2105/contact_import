@@ -2,7 +2,7 @@
 
 An app which lets you have all your contacts imported with CSV files, and then processed to became part of your list!
 
-Heroku URL: https://contacts-app-samo.herokuapp.com/csv_files
+Heroku URL: https://contacts-app-samo.herokuapp.com/
 
 Technologies and Gems:
 - Ruby on Rails 6.0.4.
