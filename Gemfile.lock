@@ -118,12 +118,10 @@ GEM
     marcel (1.0.1)
     method_source (1.0.0)
     mini_mime (1.1.0)
-    mini_portile2 (2.6.1)
     minitest (5.14.4)
     msgpack (1.4.2)
     nio4r (2.5.8)
-    nokogiri (1.12.3)
-      mini_portile2 (~> 2.6.1)
+    nokogiri (1.12.3-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pg (1.2.3)
@@ -250,7 +248,7 @@ GEM
     zeitwerk (2.4.2)
 
 PLATFORMS
-  ruby
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap (>= 1.4.2)
@@ -280,7 +278,7 @@ DEPENDENCIES
   will_paginate (~> 3.1.0)
 
 RUBY VERSION
-   ruby 2.6.3p62
+   ruby 2.6.8p205
 
 BUNDLED WITH
-   2.1.4
+   2.2.25
