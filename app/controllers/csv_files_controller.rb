@@ -20,6 +20,7 @@ class CsvFilesController < ApplicationController
         if csv.save
             response = true
             CsvFileParserWorker.perform_async(csv.id, url_for(csv.file))
+            redirect_to csv_files_path, notice: "Successfully uploaded file"
         else
             redirect_to csv_files_path, alert: "Error uploading file #{csv.errors.messages}"
         end

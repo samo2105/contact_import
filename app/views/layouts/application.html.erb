@@ -18,6 +18,11 @@
           <%= alert %>
         </div>
       <% end %>
+       <%  if notice %>
+        <div class="alert alert-success" role="alert">
+          <%= notice %>
+        </div>
+      <% end %>
       <%= yield %>
     </div>
     <%= render "layouts/footer"%>

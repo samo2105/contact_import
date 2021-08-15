@@ -14,7 +14,8 @@ class CsvFileParserWorker
         ActiveRecord::Base.transaction do
             csv_parsed.each_with_index do |row, index|
                 data = build_contact_data(row, csv.order).with_indifferent_access
-                contact = Contact.new(data.merge(card_franchise: data[:credit_card].credit_card_brand_name, user_id: user.id))
+                contact = Contact.new(data.merge(user_id: user.id).except(:credit_card))
+                contact.secure_credit_card(data[:credit_card])
                 logs += "Row #{index+1}, #{contact.errors.messages} \n" if !contact.save
             end
         end
