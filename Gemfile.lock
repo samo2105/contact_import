@@ -268,7 +268,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  aws-sdk-s3
+  aws-sdk-s3 (~> 1.98.0)
   bootsnap (>= 1.4.2)
   bootstrap (~> 5.1.0)
   byebug
