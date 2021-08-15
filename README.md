@@ -26,10 +26,11 @@ As the application uses Rails and Ruby, the minimum requirements are:
 - Install Yarn -> [Instructions](https://classic.yarnpkg.com/en/docs/install/#debian-stable)
 
 You must create too an .env file with the following vars
-AWS_BUCKET=
-ACCESS_KEY_AWS=
-SECRET_ACCESS_AWS=
-AWS_REGION=
+
+- AWS_BUCKET=
+- ACCESS_KEY_AWS=
+- SECRET_ACCESS_AWS=
+- AWS_REGION=
 
 Before all of this, use `bundle install` to install all the needed gems to run the app
 
