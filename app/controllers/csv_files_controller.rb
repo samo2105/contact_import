@@ -19,8 +19,8 @@ class CsvFilesController < ApplicationController
         csv = current_user.csv_files.new(csv_file_params)
         if csv.save
             response = true
-            CsvFileParserWorker.perform_async(csv.id, url_for(csv.file))
-            redirect_to csv_files_path, notice: "Successfully uploaded file"
+            CsvFileParserWorker.perform_later(csv.id, url_for(csv.file))
+            redirect_to csv_files_path, notice: "Successfully uploaded"
         else
             redirect_to csv_files_path, alert: "Error uploading file #{csv.errors.messages}"
         end

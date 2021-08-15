@@ -13,6 +13,6 @@ class CsvFile < ApplicationRecord
   end
 
   def order_verification
-    errors.add(:order, 'Fields must be unique per csv') if order.uniq.length != order.length
+    errors.add(:order, 'Fields must be unique per csv') if order && order.uniq.length != order.length
   end
 end

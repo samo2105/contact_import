@@ -1,7 +1,6 @@
-class CsvFileParserWorker
+class CsvFileParserWorker < ApplicationJob
     require 'csv'
     require 'open-uri'
-    include Sidekiq::Worker
     sidekiq_options retry: false
     require 'credit_card_validations/string'
 
