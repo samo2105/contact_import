@@ -19,7 +19,7 @@ class CsvFileParserWorker
                 logs += "Row #{index+1}, #{contact.errors.messages} \n" if !contact.save
             end
         end
-        logs == "" ? csv.update(state: 3) : csv.update(logs: logs, state: 2)
+        logs == "\n" ? csv.update(state: 3) : csv.update(logs: logs, state: 2)
     end
 
     def build_contact_data(row, csv_order)
